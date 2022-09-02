@@ -1,6 +1,4 @@
-# consoleCalculator
-
-<h2> A simple console calculator maded in C# with a lot of functions </h2>
+<h1> A simple console calculator maded in C# with a lot of functions </h2>
 
 <h3> List of functions
 <ul>
