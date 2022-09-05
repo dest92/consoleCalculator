@@ -36,6 +36,7 @@ namespace Calculator
         {
             Calculadora calc = new();
             calc.Menu();
+           
         }
 
 
@@ -52,11 +53,11 @@ namespace Calculator
                 //Si el numero elegido es 0, pido que introduzca un numero
 
                 //Change the color of the console letters
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine(text);
                 Console.ForegroundColor = ConsoleColor.Cyan;
 
-                Console.WriteLine("What would you like to do? \n | 0-Exit \n | 1-Sum \n | 2-Multiplication \n | 3-Division \n | 4-Substract \n | 5-Result \n | 6-Operation \n | 7-Square \n");
+                Console.WriteLine("What would you like to do? \n | 0. Exit \n | 1. Sum \n | 2. Multiplication \n | 3. Division \n | 4. Substract \n | 5. Result \n | 6. Operation \n | 7. Square \n | 8. Matrix Calculator");
                 //Controls the Menu
                 try
                 {
@@ -127,7 +128,16 @@ namespace Calculator
                     case 7:
                         calc.squareRoot();
                         break;
+
+
+                    case 8:
+                        Console.Clear();
+                        calc.matrixCalculator();
+                        break;
                 }
+
+                
+
             }
 
         }
@@ -357,6 +367,217 @@ namespace Calculator
                 Console.WriteLine("Error:" + d.Message);
                 Console.ForegroundColor = ConsoleColor.Cyan;
             }
+        
+        
         }
+
+
+
+
+        public void matrixCalculator()
+        {
+
+
+
+            int[] matrix;
+            Console.WriteLine("\n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(@"
+                            ███▄ ▄███▓ ▄▄▄     ▄▄▄█████▓ ██▀███   ██▓▒██   ██▒
+                            ▓██▒▀█▀ ██▒▒████▄   ▓  ██▒ ▓▒▓██ ▒ ██▒▓██▒▒▒ █ █ ▒░
+                            ▓██    ▓██░▒██  ▀█▄ ▒ ▓██░ ▒░▓██ ░▄█ ▒▒██▒░░  █   ░ 
+                            ▒██    ▒██ ░██▄▄▄▄██░ ▓██▓ ░ ▒██▀▀█▄  ░██░ ░ █ █ ▒ 
+                            ▒██▒   ░██▒ ▓█   ▓██▒ ▒██▒ ░ ░██▓ ▒██▒░██░▒██▒ ▒██▒
+                            ░ ▒░   ░  ░ ▒▒   ▓▒█░ ▒ ░░   ░ ▒▓ ░▒▓░░▓  ▒▒ ░ ░▓ ░
+                                                                        
+                                                   
+");
+            Console.WriteLine(@"
+            ▄████▄   ▄▄▄       ██▓     ▄████▄   █    ██  ██▓    ▄▄▄     ▄▄▄█████▓ ▒█████   ██▀███  
+           ▒██▀ ▀█  ▒████▄    ▓██▒    ▒██▀ ▀█   ██  ▓██▒▓██▒   ▒████▄   ▓  ██▒ ▓▒▒██▒  ██▒▓██ ▒ ██▒
+           ▒▓█    ▄ ▒██  ▀█▄  ▒██░    ▒▓█    ▄ ▓██  ▒██░▒██░   ▒██  ▀█▄ ▒ ▓██░ ▒░▒██░  ██▒▓██ ░▄█ ▒    
+           ▒▓▓▄ ▄██▒░██▄▄▄▄██ ▒██░    ▒▓▓▄ ▄██▒▓▓█  ░██░▒██░   ░██▄▄▄▄██░ ▓██▓ ░ ▒██   ██░▒██▀▀█▄  
+           ▒ ▓███▀ ░ ▓█   ▓██▒░██████▒▒ ▓███▀ ░▒▒█████▓ ░██████▒▓█   ▓██▒ ▒██▒ ░ ░ ████▓▒░░██▓ ▒██▒
+     
+ 
+
+                                                        
+");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+
+            Console.WriteLine("\n" + "Input the total rows of the matrix");
+            int rows = int.Parse(Console.ReadLine());
+            Console.WriteLine("Input the total columns of the matrix");
+            int columns = int.Parse(Console.ReadLine());
+
+            matrix = new int[rows * columns];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.WriteLine("Input the number of the row {0} and column {1}", i, j);
+                    matrix[i * columns + j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            Console.WriteLine("The matrix is: ");
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write(matrix[i * columns + j] + " ");
+                }
+                Console.WriteLine();
+                
+            }
+
+            int option = 0;
+            do
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Input the operation to do with the matrix");
+                Console.WriteLine("0. Exit");
+                Console.WriteLine("1. Sum");
+                Console.WriteLine("2. Substract");
+                Console.WriteLine("3. Multiply");
+                Console.WriteLine("4. Divide");
+                Console.WriteLine("5. Transpose");
+                Console.WriteLine("6. Determinant");
+                Console.WriteLine("7. Inverse");
+
+
+
+                option = int.Parse(Console.ReadLine());
+
+                switch (option)
+                {
+
+                    case 0:
+
+                        
+                        break;
+
+
+                        
+                    case 1:
+                        Console.WriteLine("Input the number to sum");
+                        int number = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                matrix[i * columns + j] += number;
+                            }
+                        }
+                        break;
+                   
+                    
+                    case 2:
+                        Console.WriteLine("Input the number to substract");
+                        number = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                matrix[i * columns + j] -= number;
+                            }
+                        }
+                        break;
+                   
+                    
+                    case 3:
+                        Console.WriteLine("Input the number to multiply");
+                        number = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                matrix[i * columns + j] *= number;
+                            }
+                        }
+                        break;
+                  
+                    
+                    case 4:
+                        Console.WriteLine("Input the number to divide");
+                        number = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                matrix[i * columns + j] /= number;
+                            }
+                        }
+                        break;
+                   
+               
+
+
+                    case 5:
+                        int[] matrix2 = new int[rows * columns];
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                matrix2[j * rows + i] = matrix[i * columns + j];
+                            }
+                        }
+
+                        Console.Clear();
+                        Console.WriteLine("The matrix transposed is: \n");
+                        
+                        for (int i = 0; i < columns; i++)
+                        {
+                            for (int j = 0; j < rows; j++)
+                            {
+                                Console.Write(matrix2[i * rows + j] + " ");
+                            }
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    case 6:
+                        int determinant = 0;
+
+                        
+
+
+                        Console.WriteLine("Coming soon");
+                        
+                        // Console.WriteLine("The determinant is: " + determinant);
+                        break;
+
+
+                    case 7:
+                        Console.WriteLine("Coming soon... ");
+                        
+                        break;
+
+
+                    case 8:
+                        Console.WriteLine("The matrix is: ");
+                        for (int i = 0; i < rows; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                Console.Write(matrix[i * columns + j] + " ");
+                            }
+                            Console.WriteLine();
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
+                }
+            } while (option != 0);
+            //Console.WriteLine("Input the operation to do with the matrix");
+            //string operacion = Console.ReadLine();
+
+
+        }
+    
     }
+ 
 }
