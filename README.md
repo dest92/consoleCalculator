@@ -10,6 +10,7 @@
 <li>Division</li>
 <li>Square root</li>
 <li>Full arithmetics operations </li>
+<li> Matrix calculator </li>
 <li> A lot more coming soon</li>
 </ul>
 
